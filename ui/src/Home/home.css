@@ -1,0 +1,10 @@
+.NavBar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.SubmitBar{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

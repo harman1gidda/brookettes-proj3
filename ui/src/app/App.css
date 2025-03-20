@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  border-top: solid black 2px;
+}
+
+.header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  /* padding-bottom: 30px;
+  border-bottom: solid black 2px; */
+}
