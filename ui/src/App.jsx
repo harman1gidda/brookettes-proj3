@@ -10,6 +10,7 @@ function App() {
     <>
       <h1>The Brookettes</h1>
       <p>Authors: Brooke Sharpenski, Harman Gidda, Kiersten Morrow, Andrew Stamps, Marques Johnson, Damon Hayes</p>
+      {/* JUST GETTING THE BASIC FILES READY */}
     </>
   )
 }
