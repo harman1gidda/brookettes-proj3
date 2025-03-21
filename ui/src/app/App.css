@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,17 +7,27 @@
   text-align: center;
 }
 
+body {
+  background-color: rgb(231, 228, 228);
+  margin-top: 80px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms; transform: 0.3s ease;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  
+
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+
 }
 
 @keyframes logo-spin {
@@ -35,27 +47,188 @@
 
 .card {
   padding: 2em;
+  margin: 1em;
+  width: 300px;
+  background-color: #ffffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
+.card::after {
+  content: '\f185'; /* Construction icon (Font Awesome Hammer) */
+  font-family: 'Font Awesome 6 Free'; /* Font Awesome font */
+  font-weight: 900; /* Bold */
+  font-size: 3rem;
+  color: #0a74da; /* Blue color */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  opacity: 0; /* Initially hidden */
+}
+.card:hover::after {
+  opacity: 1; /* Show on hover */
+  transform: rotate(360deg); /* Rotate animation */
+}
+
+.card:hover {
+  border-color: #888888;
+}transform: translateY(-5px);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 
 .read-the-docs {
   color: #888;
 }
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgb(7, 55, 100), #0056b3);
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-.footer{
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.navbar a.active {
+  background: white;
+  color: #cad4dd;
+  border-radius: 8px;
+}
+.footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
-  border-top: solid black 2px;
+  padding: 1rem;
+  background-color: #8d99ae; /* Blue footer */
+  color: white;
+  font-size: 0.9rem;
+  border-top: 1px solid #0a498b;
 }
 
-.header{
+.header {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 80px;
   width: 100%;
   text-align: center;
-  /* padding-bottom: 30px;
-  border-bottom: solid black 2px; */
+  background-color: #0a74da; /* Blue header */
+  color: white;
+  padding: 1.5rem 0; /* More padding */
+  font-size: 1.8rem; /* Larger font */
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  z-index: 1000;
+}
+a {
+  color: #007bff; /* Bright blue for links */
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+  ;
+}
+
+button {
+  background: #edf2f4;
+  color: white;
+  border: none;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff); /* Darker gradient on hover */
+}
+
+.hero {
+  background: linear-gradient(135deg, #0a74da, #0056b3); /* Gradient blue background */
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 4em; /* Adjust logo size for mobile */
+  }
+
+  .card {
+    padding: 1.5em; /* Smaller padding for smaller screens */
+  }
+}
+
+/* New Stylish Effects */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.container .card {
+  margin: 1rem;
+}
+
+.container .card:hover {
+  transform: translateY(-10px); /* Stronger lift effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Larger shadow */
+  background-color: #f8f8f8; 
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  color: #777;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.icon-container i {
+  color: #0a74da;
+  transition: transform 0.3s ease, color 0.3s ease;
 }

@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 export default function Home(){
     return (
         <>
-            <h1 className='header'>HOME PAGE</h1>
+            {/* <h1 className='header'>HOME PAGE</h1> */}
             <div className='NavContainer'>
                 <div className='NavBar'>
                     <div className='button'>
