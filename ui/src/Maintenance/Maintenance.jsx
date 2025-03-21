@@ -31,12 +31,15 @@ export default function Maintenance() {
   
     return (
       <>
-        <div className="container">
-          {/* <h1 className='header'>Maintenance PAGE</h1> */}
-          <div className="filter-container">
-            <label htmlFor="filter">Filter by Site:</label>
-            <select id="filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <div className="chart-container">
+           <div className="filter-container">
+            <label htmlFor="filter">Filter:</label>
+
+            <select id="filter" value={filter} 
+              onChange={(e) => setFilter(e.target.value)}>
+
               <option value="">All Sites</option>
+
               {Array.from(new Set(maintenanceData.map(item => item.site_id))).map(site_id => (
                 <option key={site_id} value={site_id}>{site_id}</option>
               ))}
@@ -67,7 +70,11 @@ export default function Maintenance() {
                   <td>{row.site_name}</td>
                   <td>{row.start_date}</td>
                   <td>{row.end_date}</td>
-                  <td style={{ borderColor: conColor(row.condition_color), borderWidth: '3px', borderStyle: 'solid' }}>{row.condition_color}</td>
+                  <td style={{ borderColor: conColor(row.condition_color),
+                    borderWidth: '5px',
+                    borderStyle: 'solid' }}>
+                    {row.condition_color}
+                  </td>
                   <td>{row.approved_rejected}</td>
                   <td>{row.approver_comments}</td>
                 </tr>
@@ -80,14 +87,14 @@ export default function Maintenance() {
   }
 
   function conColor(condition) {
-    switch (condition) {
-      case "Red":
+    switch (condition.toLowerCase()) {
+      case "red":
         return "red";
-      case "Yellow":
+      case "yellow":
         return "yellow";
-      case "Green":
+      case "green":
         return "green";
       default:
-        return "black";
+        return "white";
     }
   }

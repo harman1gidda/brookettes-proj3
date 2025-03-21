@@ -22,6 +22,7 @@ export default function Submit() {
   const [siteformName, setSiteFormName] = useState('')
   const [siteCondition, setSiteCondition] = useState()
   const [loading, setLoading] = useState(false);
+  const [siteData, setSiteData] = useState([])
   
 
   useEffect(() => {
@@ -34,7 +35,10 @@ export default function Submit() {
   useEffect(() => {
     siteOptions = [];
     for(let i of sites){
-      siteOptions.push(i.site_name)
+      if(i.site_name){
+        setSiteData(e => [...e, i.site_name])
+      }
+      // siteOptions.push(i.site_name)
     }
     setLoading(false)
   }, [sites])
@@ -78,7 +82,6 @@ export default function Submit() {
       }
     }
     setFormData((prev) => ({ ...prev, [field]: value }));
-    console.log(formData)
   };
 
   if(loading){
@@ -91,7 +94,7 @@ export default function Submit() {
 
   return (
     <>
-      <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2 }}>
+      <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "grey.600" }}>
           <FormControl fullWidth margin="normal">
             <InputLabel id="site-label">Site Name</InputLabel>
               <Select
@@ -100,7 +103,7 @@ export default function Submit() {
                 label="Site Name"
                 onChange={(e) => handleChange("site", e.target.value) || setSiteFormName(e.target.value)}
               >
-                {siteOptions.map((site, index) => (
+                {siteData.map((site, index) => (
                   <MenuItem key={index} value={site}>
                     {site}
                   </MenuItem>

@@ -232,3 +232,52 @@ button:hover {
   color: #0a74da;
   transition: transform 0.3s ease, color 0.3s ease;
 }
+
+body {
+  background: url('https://images.all-free-download.com/images/graphiclarge/creative_construction_sign_with_tool_vector_582883.jpg') no-repeat center center fixed;
+  background-size: 650px auto;
+  
+  
+}
+
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark transparent overlay */
+  z-index: -1;
+}
+/* Navbar Carousel Wrapper */
+.nav-carousel {
+  display: flex;
+  gap: 1rem;
+  animation: nav-slide 10s linear infinite;
+}
+
+/* Carousel Animation */
+@keyframes nav-slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px); /* Moves left */
+  }
+  100% {
+    transform: translateX(0); /* Returns */
+  }
+}

@@ -21,8 +21,8 @@ export default function Sites(){
         </div>
         <div className='sitelist'>
             {data.map((site)=>(
-              <div key={site.id}>
-                 <Link to={`/sites/${site.id}`}>{site.site_name}</Link>
+              <div key={site.id} className='site-box'>
+                 <Link to={`/sites/${site.id}`} className='site-link'>{site.site_name}</Link>
               </div>
             ))}       
         </div>

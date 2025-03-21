@@ -2,20 +2,17 @@ body {
   background-color: #34495e;
 }
 
-.container {
-  
-  margin-top: 100px;
+.chart-container {
   align-items: center;
   height: 100vh;
-  border: solid 1px black;
-  background-color: #34495e;
+  background-color: #07559e;
   padding: 20px;
   border-radius: 10px;
 } 
 
 .maintenance-table {
-  margin-top: 50px;
-  border: solid 1px black;
+  margin-top: 0px;
+  
   width: 100%;
  
 } 
@@ -41,8 +38,8 @@ td {
 
 #filter {
   align-items: center;
-  margin-top: 25px ;
-  margin-bottom: -20px;
+  margin-top: 0 ;
+  margin-bottom: 0;
   margin-left: 3px;
   border-radius: 10px;
   padding: 2px;
@@ -55,8 +52,8 @@ td {
   border: solid 2px black;
   border-radius: 5px;
   margin-top: 0%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 tr{
