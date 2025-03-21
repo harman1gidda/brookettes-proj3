@@ -35,6 +35,11 @@ body {
 
 }
 
+.Secret{
+  min-height: 700px;
+  min-width: 700px;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
