@@ -1,10 +1,30 @@
 .NavBar{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-self: center;
+    min-width: 100%;
 }
 
 .SubmitBar{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.iconButton{
+    margin-top: 20px;
+    width: 300px;
+}
+
+
+img{
+    background-color: rgb(255, 255, 255, 0.5);
+    max-width: 300px;
+    max-height: 300px;
 }
