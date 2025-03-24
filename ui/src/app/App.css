@@ -85,8 +85,9 @@ body {
 
 .card:hover {
   border-color: #888888;
-}transform: translateY(-5px);
+transform: translateY(-5px);
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
 
 .read-the-docs {
   color: #888;

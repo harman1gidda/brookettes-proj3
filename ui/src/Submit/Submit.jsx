@@ -94,7 +94,7 @@ export default function Submit() {
 
   return (
     <>
-      <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "grey.600" }}>
+      <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
           <FormControl fullWidth margin="normal">
             <InputLabel id="site-label">Site Name</InputLabel>
               <Select

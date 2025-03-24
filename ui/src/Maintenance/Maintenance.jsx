@@ -2,49 +2,40 @@ import { createElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Maintenance.css";
 import {Link} from 'react-router-dom';
+import Filter from '../Filter/Filter.jsx';
+import HandleEdit from './HandleEdit.jsx';
+import HandleDelete from './HandleDelete.jsx';
 
 export default function Maintenance() {
-    const maintenanceData = []
     const [filter, setFilter] = useState("");
-    const [filteredData, setFilteredData] = useState(maintenanceData);
-    const [data, setData] = useState()
-
-    
+    const [filteredData, setFilteredData] = useState([]);
+    const [data, setData] = useState([]);
+    const [site, setSite] = useState('')
+    const [startDate, setStartDate] =useState('');
+    const [endDate, setendDate] =useState('');
+    const [conditionColor, setConditionColor] =useState('');
 
     useEffect(() => {
       fetch("http://localhost:8081/joined")
         .then(res => res.json())
-        .then(res2 => setData(res2))
-    }, [])
+        .then(res2 => {
+          setData(res2);
+          setFilteredData(res2); 
+        })
+    }, []);
 
-    useEffect(() => {
-      setFilteredData(data)
-    }, [data])
-  
-    useEffect(() => {
-      if (filter) {
-        setFilteredData(maintenanceData.filter(item => item.site_id === filter));
-      } else {
-        setFilteredData(maintenanceData);
-      }
-    }, [filter]);
-  
     return (
       <>
-        <div className="chart-container">
-           <div className="filter-container">
-            <label htmlFor="filter">Filter:</label>
-
-            <select id="filter" value={filter} 
-              onChange={(e) => setFilter(e.target.value)}>
-
-              <option value="">All Sites</option>
-
-              {Array.from(new Set(maintenanceData.map(item => item.site_id))).map(site_id => (
-                <option key={site_id} value={site_id}>{site_id}</option>
-              ))}
-            </select>
-          </div>
+       <div className="chart-container">
+        
+        <Filter
+          filter={filter}
+          setFilter={setFilter}
+          conditionColor={conditionColor}
+          setConditionColor={setConditionColor}
+          data={data}
+          setFilteredData={setFilteredData} 
+        />
     
           <table className="maintenance-table">
             <thead>
@@ -58,12 +49,13 @@ export default function Maintenance() {
                 <th>Condition Color</th>
                 <th>Approved/Rejected</th>
                 <th>Approver Comments</th>
+                <th>Edit/Delete</th>
               </tr>
             </thead>
             
             <tbody >
               {filteredData.map((row) => (
-                <tr key={row.task_title}>
+                <tr key={row.id}>
                   <td >{row.id}</td>
                   <td >{row.task_title}</td>
                   <td>{row.site_id}</td>
@@ -73,10 +65,14 @@ export default function Maintenance() {
                   <td style={{ borderColor: conColor(row.condition_color),
                     borderWidth: '5px',
                     borderStyle: 'solid' }}>
-                    {row.condition_color}
+                    {row.condition_color.toUpperCase()} 
                   </td>
                   <td>{row.approved_rejected}</td>
                   <td>{row.approver_comments}</td>
+                  <td>
+                    <HandleEdit id={row.id} setData={setData} setFilteredData={setFilteredData} rowData={row}/>
+                    <HandleDelete id={row.id}/>
+                    </td>
                 </tr>
               ))}
             </tbody>

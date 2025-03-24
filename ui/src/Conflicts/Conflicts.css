@@ -1,0 +1,24 @@
+button{
+    background: white;
+    color: black;
+}
+
+/* #root{
+    min-width: 100vw;
+    min-height: 100vh;
+    
+} */
+
+.calendar-div{
+    display: flex;
+    justify-content: center;
+}
+
+
+.fc {
+    display: flex;
+    justify-self: space-around;
+    min-width: 50vw;
+    min-height: 50vh;
+    margin-top: -200px;
+}
