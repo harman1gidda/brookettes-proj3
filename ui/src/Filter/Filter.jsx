@@ -2,18 +2,32 @@ import { createElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
-export default function Filter({ filter, setFilter, data, conditionColor, setConditionColor, setFilteredData }) {
-    // const [orderBy, setOrderBy] = useState('');
+export default function Filter({ filter, setFilter, data, conditionColor, setConditionColor, setFilteredData, orderBy, setOrderBy }) {
+    
   useEffect(() => {
-    let filtered = data;
+
+    
+    let filtered = [...data];
     if (filter) {
         filtered = filtered.filter(item => item.site_name === filter);
     }
     if (conditionColor) {
         filtered = filtered.filter(item => item.condition_color.toUpperCase() === conditionColor.toUpperCase());
     }
+
+    if (orderBy) { // Added sorting logic
+      filtered = filtered.sort((a, b) => {
+          if (typeof a[orderBy] === 'number' && typeof b[orderBy] === 'number') {
+              return a[orderBy] - b[orderBy];
+          }
+          if (a[orderBy] < b[orderBy]) return -1;
+          if (a[orderBy] > b[orderBy]) return 1;
+          return 0;
+      });
+  }
+
     setFilteredData(filtered);
-}, [filter, conditionColor, data]);
+}, [filter, conditionColor, data, orderBy]);
    
    
     return (
@@ -40,6 +54,14 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
                 <option key={condition_color} value={condition_color}>{condition_color}</option>
               ))}
              </select>
+
+             <select id="order-by" value={orderBy} onChange={(e) => setOrderBy(e.target.value)}> {/* Added dropdown for Order By */}
+                    <option value="">None</option>
+                    <option value="id">Maintenance ID</option>
+                    <option value="start_date">Start Date</option>
+                    <option value="end_date">End Date</option>
+             </select>
+        
 
         </div>
 

@@ -5,3 +5,14 @@ body {
 .footer {
   color: white;
 }
+
+.submit-box {
+  margin-top: -300px;
+  max-Width: 500;
+  margin: "auto";
+  margin-top: 5; 
+  padding: 3;
+  box-Shadow: 3; 
+  border-radius: 2;
+  background-color: "white"
+}

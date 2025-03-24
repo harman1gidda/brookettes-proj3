@@ -15,6 +15,10 @@ export default function Maintenance() {
     const [endDate, setendDate] =useState('');
     const [conditionColor, setConditionColor] =useState('');
 
+    const [orderBy, setOrderBy] = useState("");
+
+  
+
     useEffect(() => {
       fetch("http://localhost:8081/joined")
         .then(res => res.json())
@@ -23,6 +27,10 @@ export default function Maintenance() {
           setFilteredData(res2); 
         })
     }, []);
+
+    useEffect(() => {
+      console.log('🔥 Rendered table with rows:', filteredData.length);
+    }, [filteredData]);
 
     return (
       <>
@@ -35,6 +43,8 @@ export default function Maintenance() {
           setConditionColor={setConditionColor}
           data={data}
           setFilteredData={setFilteredData} 
+          orderBy={orderBy}             
+          setOrderBy={setOrderBy}  
         />
     
           <table className="maintenance-table">
@@ -55,6 +65,7 @@ export default function Maintenance() {
             
             <tbody >
               {filteredData.map((row) => (
+                
                 <tr key={row.id}>
                   <td >{row.id}</td>
                   <td >{row.task_title}</td>
@@ -70,7 +81,7 @@ export default function Maintenance() {
                   <td>{row.approved_rejected}</td>
                   <td>{row.approver_comments}</td>
                   <td>
-                    <HandleEdit id={row.id} setData={setData} setFilteredData={setFilteredData} rowData={row}/>
+                    <HandleEdit id={row.id}/>
                     <HandleDelete id={row.id}/>
                     </td>
                 </tr>

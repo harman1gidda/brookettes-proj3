@@ -13,6 +13,9 @@
 body {
   background-color: rgb(231, 228, 228);
   margin-top: 80px;
+  margin-bottom: 80px;
+  padding-top: 120px;
+  padding-bottom: 80px;
   align-items: center;
   justify-content: center;
 }

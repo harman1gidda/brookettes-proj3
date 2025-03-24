@@ -54,7 +54,7 @@ export default function Home(){
                     </div>
                 </div>
                 <div className='SubmitBar'>
-                    <div className='button'>
+                    <div className='button' id="submitButton">
                             <button><Link to={"/submit"}>Submit New Request</Link></button>
                     </div>
                 </div>

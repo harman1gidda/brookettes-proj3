@@ -6,6 +6,7 @@ const knex = require('knex')(require('./knexfile.js')["development"])
 
 const cors = require('cors')
 app.use(cors())
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send("application is up and running")
@@ -53,11 +54,27 @@ app.get('/maintenance/:id', (req, res)=>{
 
 app.patch('/maintenance/:id', (req, res) => {
     let getId = req.params.id
-    const {task_title, site_id, start_date, end_date, condition_color, approved_rejected, approver_comments} = req.body;
+    const {
+        task_title, 
+        site_id, 
+        start_date, 
+        end_date, 
+        condition_color, 
+        approved_rejected, 
+        approver_comments
+    } = req.body;
 
     knex('maintenance')
         .where({ "id": getId})
-        .update({task_title, site_id, start_date, end_date, condition_color, approved_rejected, approver_comments})
+        .update({
+            task_title, 
+            site_id, 
+            start_date, 
+            end_date, 
+            condition_color, 
+            approved_rejected, 
+            approver_comments
+        })
         .then(function() {
             res.json({success: true, message: 'ok'})
         })
@@ -80,6 +97,7 @@ app.patch('/sites/:id', (req, res) => {
             res.json(err)
         })
 })
+
 
 //----------------------------------POST------------------------------------
 

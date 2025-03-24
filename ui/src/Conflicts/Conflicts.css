@@ -16,9 +16,13 @@ button{
 
 
 .fc {
-    display: flex;
-    justify-self: space-around;
-    min-width: 50vw;
-    min-height: 50vh;
-    margin-top: -200px;
+    position: fixed;
+    min-width: 35vw;
+    min-height: 35vh;
+    margin-top: -450px;
+    z-index: 1;
+}
+
+.conflicts{
+    --fc-event-border-color: red;
 }

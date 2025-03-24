@@ -4,22 +4,29 @@ export default function HandleDelete({id}){
   const [status, setStatus] =useState(null);
 
   const handleDelete = ()=>{
-    fetch(`http://localhost:8081/maintenance/${id}`,{
-      method: 'DELETE',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
-    .then((res)=>{
-      if(res.ok){
-        alert('Item deleted!')
-        window.location.reload();
-      }else{
-        setStatus('Failed to delete')
-      }
-    })
+
+    const confirmDelete = window.confirm('Are you sure you want to delete this?')
+
+    if(confirmDelete){
+      fetch(`http://localhost:8081/maintenance/${id}`,{
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      })
+      .then((res)=>{
+        if(res.ok){
+          alert('Item deleted!')
+          window.location.reload();
+        }else{
+          setStatus('Failed to delete')
+        }
+      })
+    } else{
+      console.log('Delete action was canceled')
+    }
   }
 
   return (  

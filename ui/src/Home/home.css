@@ -1,6 +1,16 @@
+#root{
+    min-width: 100vw;
+    display: block;
+}
+
+.navContainer{
+    min-width: 100vw;
+}
+
 .NavBar{
     display: flex;
-    justify-content: space-between;
+    min-width: 100vw;
+    justify-content: space-evenly;
     align-self: center;
     min-width: 100%;
 }
@@ -8,13 +18,19 @@
 .SubmitBar{
     display: flex;
     justify-content: center;
+    min-width: 200px;
     margin-top: 20px;
 }
 
 .button{
     display: flex;
     flex-direction: column;
+    width: fit-content;
     /* align-items: center; */
+}
+
+#submitButton{
+    min-width: 40vw;
 }
 
 .iconButton{

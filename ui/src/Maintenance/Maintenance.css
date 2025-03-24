@@ -2,9 +2,14 @@ body {
   background-color: #34495e;
 }
 
+:root{
+  display: flex;
+  justify-content: center;
+}
+
 .chart-container {
   align-items: center;
-  height: 100vh;
+  justify-content: center;
   background-color: #07559e;
   padding: 20px;
   border-radius: 10px;
@@ -34,6 +39,7 @@ td {
   border: 2px solid #ecf0f1;
   border-radius: 5px;
   background-color: rgb(184, 182, 182); 
+  color: black;
 }
 
 #filter {
@@ -59,5 +65,24 @@ td {
 tr{
   text-align: center ;
   border: 3px solid #ecf0f1;
+}
+
+.chart-container{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  border: 1px solid #ccc;
+  justify-content: center;
+}
+
+:root{
+  align-items: center;
+}
+
+.maintenance-table{
+  width: 90%;
+  align-items: center;
+  padding: 30px;
+  
 }
 

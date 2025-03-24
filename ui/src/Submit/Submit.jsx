@@ -14,7 +14,8 @@ import {
 } from "@mui/material";
 
 var siteOptions = ["Site A", "Site B", "Site C"];
-const colorMap = ["green", "yellow", "red"];
+const colorMap = ["green","yellow", "red"];
+
 
 export default function Submit() {
   const [formData, setFormData] = useState({site: 0, title: "", startDate: "", endDate: "", condition: ""});
@@ -44,6 +45,12 @@ export default function Submit() {
   }, [sites])
 
   function submit(){
+
+    if (!formData.title || !formData.site || !formData.startDate || !formData.endDate ||!formData.condition){
+      alert('Please fill out all fields before submitting.');
+      return;
+    }
+    
     fetch('http://localhost:8081/maintenance', {
       method: 'POST',
       mode: 'cors',
@@ -58,11 +65,8 @@ export default function Submit() {
         end_date: formData.endDate,
         condition_color: formData.condition
       }),
-      
-    })
-
+   })
   }
-
 
   const handleChange = (field, value) => {
     if(field == 'site'){
@@ -94,7 +98,7 @@ export default function Submit() {
 
   return (
     <>
-      <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
+      <Box className='submit-box' sx={{ maxWidth: 500, mx: "auto", mt: -15, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
           <FormControl fullWidth margin="normal">
             <InputLabel id="site-label">Site Name</InputLabel>
               <Select
@@ -172,10 +176,3 @@ export default function Submit() {
 }
 
 
-// export default function Submit(){
-//     return (
-//         <>
-//             <h1>Submit PAGE</h1>
-//         </>
-//     )
-// }
