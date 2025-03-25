@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
-export default function HandleDelete({id}){
-  const [status, setStatus] =useState(null);
+export default function HandleDelete({ id }) {
+  const [status, setStatus] = useState(null);
 
-  const handleDelete = ()=>{
+  const handleDelete = () => {
 
     const confirmDelete = window.confirm('Are you sure you want to delete this?')
 
-    if(confirmDelete){
-      fetch(`http://localhost:8081/maintenance/${id}`,{
+    if (confirmDelete) {
+      fetch(`http://localhost:8081/maintenance/${id}`, {
         method: 'DELETE',
         mode: 'cors',
         headers: {
@@ -16,20 +16,20 @@ export default function HandleDelete({id}){
           'Content-Type': 'application/json',
         }
       })
-      .then((res)=>{
-        if(res.ok){
-          alert('Item deleted!')
-          window.location.reload();
-        }else{
-          setStatus('Failed to delete')
-        }
-      })
-    } else{
+        .then((res) => {
+          if (res.ok) {
+            alert('Item deleted!')
+            window.location.reload();
+          } else {
+            setStatus('Failed to delete')
+          }
+        })
+    } else {
       console.log('Delete action was canceled')
     }
   }
 
-  return (  
+  return (
     <div>
       <button className='med-btn' onClick={handleDelete}>Delete</button>
     </div>

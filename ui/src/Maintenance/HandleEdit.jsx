@@ -2,13 +2,13 @@ import { useState } from 'react';
 import './HandleEdit.css';
 
 export default function handleEdit({ id, currentData }) {
-  const [status, setStatus] =useState(null);
+  const [status, setStatus] = useState(null);
   const [formData, setFormData] = useState({
     start_date: '',
     end_date: '',
     condition_color: '',
-    approver_comments:'',
-    approved_rejected: false 
+    approver_comments: '',
+    approved_rejected: ''
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,13 +16,13 @@ export default function handleEdit({ id, currentData }) {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      // [name]: value
-      [name]: name === 'approved_rejected' ? event.target.checked : value,
+      [name]: value
+      // [name]: name === 'approved_rejected' ? event.target.checked : value,
     });
   };
 
-  const handleEdit= ()=>{
-    fetch(`http://localhost:8081/maintenance/${id}`,{
+  const handleEdit = () => {
+    fetch(`http://localhost:8081/maintenance/${id}`, {
       method: 'PATCH',
       mode: 'cors',
       headers: {
@@ -32,43 +32,42 @@ export default function handleEdit({ id, currentData }) {
       body: JSON.stringify(formData)
     })
 
-    .then((res)=>res.json())
-    .then((data)=>{
-      if(data.success){        
-        window.location.reload();
-        alert('Item updated!')
-        setStatus('Items updated')
-      }else{
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          window.location.reload();
+          alert('Item updated!')
+          setStatus('Items updated')
+        } else {
+          setStatus('Failed to update')
+        }
+      })
+      .catch((error) => {
         setStatus('Failed to update')
-      }
-    })
-    .catch((error)=>{
-      setStatus('Failed to update')
-    })
+      })
   }
 
-// const openModal = () => {
-//   setIsModalOpen(true);
-// };
-const openModal = () => {
-  // Populate formData with current values when the modal is opened
-  setFormData({
-    start_date: currentData.start_date || '',
-    end_date: currentData.end_date || '',
-    condition_color: currentData.condition_color || '',
-    approver_comments: currentData.approver_comments || '',
-    approved_rejected: currentData.approved_rejected || false,
-  });
-  setIsModalOpen(true);
-};
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
+  const openModal = () => {
+    // Populate formData with current values when the modal is opened
+    setFormData({
+      start_date: currentData.start_date || '',
+      end_date: currentData.end_date || '',
+      condition_color: currentData.condition_color || '',
+      approver_comments: currentData.approver_comments || '',
+      approved_rejected: currentData.approved_rejected || 'Pending',
+    });
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-const closeModal = () => {
-  setIsModalOpen(false);
-};
-
-return(
-  <div>
+  return (
+    <div>
       <button className='med-btn' onClick={openModal}>Edit</button>
 
       {isModalOpen && (
@@ -108,7 +107,7 @@ return(
                   onChange={handleInputChange}
                   placeholder="Enter condition color"
                 /> */}
-                   <label htmlFor="condition_color">Condition Color:</label>
+                <label htmlFor="condition_color">Condition Color:</label>
                 <select
                   id="condition_color"
                   name="condition_color"
@@ -131,24 +130,22 @@ return(
                   placeholder="Any Comments?"
                   value={formData.approver_comments}
                   onChange={handleInputChange}
-                 />
+                />
               </div>
 
               <div>
                 <label htmlFor="approved_rejected">Approve?:</label>
-                <input
-                  type="checkbox"
+                <select
                   id="approved_rejected"
                   name="approved_rejected"
-                  checked={formData.approved_rejected}
-                  onChange={(event) => {
-                    setFormData({
-                      ...formData,
-                      approved_rejected: event.target.checked, 
-                    });
-                  }}
-                />
-                <p id="status">{formData.approved_rejected ? 'Approved!' : 'Unapproved!'}</p>
+                  value={formData.approved_rejected} // Bind dropdown to formData
+                  onChange={handleInputChange} // Update formData on change
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Approved">Approved</option>
+                </select>
+                <p id="status">{formData.approved_rejected ? 'Rejected' : ''}</p>
               </div>
 
               <button type="button" onClick={handleEdit}>Submit</button>

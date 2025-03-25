@@ -15,9 +15,7 @@ export default function Maintenance() {
     // const [endDate, setendDate] =useState('');
     const [conditionColor, setConditionColor] =useState('');
 
-    const [orderBy, setOrderBy] = useState("");
-
-  
+    const [orderBy, setOrderBy] = useState("id");  
 
     useEffect(() => {
       fetch("http://localhost:8081/joined")
@@ -25,6 +23,7 @@ export default function Maintenance() {
         .then(res2 => {
           setData(res2);
           setFilteredData(res2); 
+          console.log(res2)
         })
     }, []);
 
@@ -50,12 +49,12 @@ export default function Maintenance() {
           <table className="maintenance-table">
             <thead>
               <tr>
-                <th>Maintenance ID</th>
+                <th onClick={() => {setOrderBy('id')}}>Maintenance ID</th>
                 <th>Task Title</th>
-                <th>Site ID</th>
-                <th>Site Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th onClick={() => {setOrderBy('site_id')}}>Site ID</th>
+                <th onClick={() => {setOrderBy('site_id')}}>Site Name</th>
+                <th onClick={() => {setOrderBy('start_date')}}>Start Date</th>
+                <th onClick={() => {setOrderBy('end_date')}}>End Date</th>
                 <th>Condition Color</th>
                 <th>Approved/Rejected</th>
                 <th>Approver Comments</th>
@@ -78,7 +77,7 @@ export default function Maintenance() {
                     borderStyle: 'solid' }}>
                     {row.condition_color.toUpperCase()} 
                   </td>
-                  <td>{row.approved_rejected ? 'Approved' : 'Rejected'}</td>
+                  <td>{row.approved_rejected ? row.approved_rejected : 'Pending'}</td>
                   <td>{row.approver_comments}</td>
                   
                     <td className='ebtn-container'>

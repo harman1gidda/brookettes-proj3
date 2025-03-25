@@ -18,7 +18,12 @@ const colorMap = ["green","yellow", "red"];
 
 
 export default function Submit() {
-  const [formData, setFormData] = useState({site: 0, title: "", startDate: "", endDate: "", condition: ""});
+  const [formData, setFormData] = useState({
+    site: 0, 
+    title: "", 
+    startDate: "", 
+    endDate: "", 
+    condition: ""});
   const [sites, setSites] = useState(siteOptions);
   const [siteformName, setSiteFormName] = useState('')
   const [siteCondition, setSiteCondition] = useState('green')

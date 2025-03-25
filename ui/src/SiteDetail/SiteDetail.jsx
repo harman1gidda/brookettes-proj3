@@ -48,8 +48,8 @@ export default function SiteDetail() {
           {maintenanceData.map((record) => (
             <tr key={record.id}>
               <td>{record.task_title}</td>
-              <td>{record.start_date}</td>
-              <td>{record.end_date}</td>
+              <td>{new Date(record.start_date).toISOString().split('T')[0]}</td>
+              <td>{new Date(record.end_date).toISOString().split('T')[0]}</td>
               <td style={{
                 borderColor: conColor(record.condition_color),
                 borderWidth: '5px',

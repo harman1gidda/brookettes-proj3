@@ -12,11 +12,10 @@ import Navbar from '../Navbar/Navbar'
 function App() {
   return (
     <>
-    
-     <Navbar/>
-      <Routes>        
-        <Route path="/" element={<Home />}/>
-        <Route path='/maintenance' element={<Maintenance />}/>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/maintenance' element={<Maintenance />} />
         <Route path='/sites' element={<Sites />} />
         <Route path="/sites/:id" element={<SiteDetail />} />
         <Route path='/conflicts' element={<Conflicts />} />
@@ -26,8 +25,7 @@ function App() {
       <div className='footer'>
         <h3>The Brookettes Project 3</h3>
         <h7 id="footerP">Authors: Brooke Sharpenski, Harman Gidda, Kiersten Morrow, Andrew Stamps, Marques Johnson, Damon Hayes</h7>
-
-      </div>          
+      </div>
     </>
   )
 }

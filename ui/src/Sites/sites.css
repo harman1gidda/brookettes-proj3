@@ -29,6 +29,9 @@ body{
 }
 
 .site-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -60,6 +63,18 @@ body{
   z-index: 1;
   border: solid black 5px;
   border-radius: 20px;
+}
+
+.RemovesiteTrigger{
+  position: fixed;
+  top: 145px;
+  right: 20px;
+}
+
+.delButton{
+  position: right;
+  left: 70px;
+
 }
 
 .siteInputLabel{

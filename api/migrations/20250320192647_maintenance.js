@@ -11,7 +11,7 @@ exports.up = function(knex) {
         table.date("start_date");
         table.date("end_date");
         table.string("condition_color");
-        table.boolean("approved_rejected");
+        table.string("approved_rejected");
         table.string('approver_comments');
       })
 };

@@ -28,6 +28,7 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
 
     setFilteredData(filtered);
 }, [filter, conditionColor, data, orderBy]);
+
    
    
     return (
@@ -60,6 +61,8 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
                     <option value="id">Maintenance ID</option>
                     <option value="start_date">Start Date</option>
                     <option value="end_date">End Date</option>
+                    <option value="site_id">Site ID</option>
+                    <option value="task_title">Task Title</option>
              </select>
         
 

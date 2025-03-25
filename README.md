@@ -104,11 +104,22 @@ The purpose of this application is to manage and track maintenance tasks across 
 ---
 ## 🐛 Running Tests
 
+### API Test
+- Install the following npm packages:
+  - `npm install --save-dev supertest`
+  - `npm install --save-dev jest`
+
+  **ensure the devDependencies section is updated in your package.json
+
+- Run `npx jest` in api folder
+
+### UI Test
+
+
 
 ---
 
 ## 🔗 Entity-Relationship Diagram (ERD)
-Below is the ERD for the application:
 
 [ERD](https://miro.com/app/board/uXjVINC1t1w=/)
 
