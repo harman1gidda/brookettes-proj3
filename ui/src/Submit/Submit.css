@@ -1,12 +1,14 @@
-body {
-  background-color: rgb(126, 119, 119);
-}
+
 
 .footer {
   color: white;
 }
 
-.submit-box {
+#root{
+  height: 100%;
+}
+
+/* .submit-box {
   margin-top: -300px;
   max-Width: 500;
   margin: "auto";
@@ -15,4 +17,21 @@ body {
   box-Shadow: 3; 
   border-radius: 2;
   background-color: "white"
+} */
+
+p{
+  color: black;
+}
+
+.submit-box{
+  align-self: bottom;
+  align-items: bottom;
+}
+
+.css-1lovaai{
+  align-items: center;
+}
+
+.css-1vocaai{
+  margin-top: 0;
 }

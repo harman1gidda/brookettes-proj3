@@ -27,7 +27,7 @@
 }
 
 /* Styling for input fields */
-.modal input, .modal textarea {
+.modal input, .modal textarea, .modal select {
   width: 100%;
   padding: 10px;
   margin-top: 5px; /* Space between label and input */
@@ -35,6 +35,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  background-color: black; /* Set input field background to black */
+  color: white; /* Set input field text color to white */
 }
 
 /* Styling for labels */

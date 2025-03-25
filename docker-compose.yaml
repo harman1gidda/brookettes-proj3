@@ -1,0 +1,45 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: postgres
+    ports:
+     - "5432:5432"
+    environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: docker
+     POSTGRES_DB: colors
+    volumes:
+     - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+    networks:
+     - app-network
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U postgres -d damonbase"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  server:
+    build: ./api
+    ports: 
+     - "8081:8081"
+    depends_on: 
+      db:
+        condition: service_healthy
+    networks:
+     - app-network
+    environment:
+     DB_CONNECTION_STRING: 'postgres://postgres:docker@db/damonbase'
+    command: sh -c "npm run migrate:rollback && npm run migrate:latest && npm run seed:run && npm start"
+
+  frontend:
+    build: ./ui
+    ports: 
+    - "5173:5173"
+    networks: 
+    - app-network
+    depends_on:
+    - server
+
+networks:
+  app-network:
+   driver: bridge    

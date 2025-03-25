@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: rgb(231, 228, 228);
+
   margin-top: 80px;
   margin-bottom: 80px;
   padding-top: 120px;
@@ -134,10 +134,14 @@ box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
   padding: 1rem;
-  background-color: #8d99ae; /* Blue footer */
+  background: linear-gradient(135deg, rgb(7, 55, 100), #0056b3); /* Blue footer */
   color: white;
   font-size: 0.9rem;
   border-top: 1px solid #0a498b;
+}
+
+#footerp{
+  color:white;
 }
 
 .header {
@@ -164,7 +168,7 @@ a:hover {
   ;
 }
 
-button {
+/* button {
   background: #edf2f4;
   color: white;
   border: none;
@@ -178,7 +182,7 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 
-}
+} */
 
 button:hover {
   background: linear-gradient(135deg, #0056b3, #007bff); /* Darker gradient on hover */

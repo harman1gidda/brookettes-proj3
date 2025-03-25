@@ -10,9 +10,9 @@ export default function Maintenance() {
     const [filter, setFilter] = useState("");
     const [filteredData, setFilteredData] = useState([]);
     const [data, setData] = useState([]);
-    const [site, setSite] = useState('')
-    const [startDate, setStartDate] =useState('');
-    const [endDate, setendDate] =useState('');
+    // const [site, setSite] = useState('')
+    // const [startDate, setStartDate] =useState('');
+    // const [endDate, setendDate] =useState('');
     const [conditionColor, setConditionColor] =useState('');
 
     const [orderBy, setOrderBy] = useState("");
@@ -28,9 +28,9 @@ export default function Maintenance() {
         })
     }, []);
 
-    useEffect(() => {
-      console.log('🔥 Rendered table with rows:', filteredData.length);
-    }, [filteredData]);
+    // useEffect(() => {
+    //   console.log('🔥 Rendered table with rows:', filteredData.length);
+    // }, [filteredData]);
 
     return (
       <>
@@ -71,19 +71,28 @@ export default function Maintenance() {
                   <td >{row.task_title}</td>
                   <td>{row.site_id}</td>
                   <td>{row.site_name}</td>
-                  <td>{row.start_date}</td>
-                  <td>{row.end_date}</td>
+                  <td>{new Date(row.start_date).toISOString().split('T')[0]}</td> {/* Format start_date */}
+                  <td>{new Date(row.end_date).toISOString().split('T')[0]}</td>   {/* Format end_date */}
                   <td style={{ borderColor: conColor(row.condition_color),
                     borderWidth: '5px',
                     borderStyle: 'solid' }}>
                     {row.condition_color.toUpperCase()} 
                   </td>
-                  <td>{row.approved_rejected}</td>
+                  <td>{row.approved_rejected ? 'Approved' : 'Rejected'}</td>
                   <td>{row.approver_comments}</td>
-                  <td>
-                    <HandleEdit id={row.id}/>
-                    <HandleDelete id={row.id}/>
-                    </td>
+                  
+                    <td className='ebtn-container'>
+                      <HandleEdit
+                        id={row.id}
+                        currentData={{
+                          ...row,
+                          start_date: new Date(row.start_date).toISOString().split('T')[0], // Format start_date
+                          end_date: new Date(row.end_date).toISOString().split('T')[0],     // Format end_date
+                        }}
+                      />
+                      <HandleDelete id={row.id}/>
+                      </td>
+                  
                 </tr>
               ))}
             </tbody>

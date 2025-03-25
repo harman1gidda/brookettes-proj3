@@ -33,9 +33,9 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
     return (
       <>
         <div className="filterTask-container">
-            <label htmlFor="filter">Filter:</label>
+            <label htmlFor="filter">Filters:</label>
             
-            <select id="filter" value={filter} 
+            <select className="filter" value={filter} 
               onChange={(e) => setFilter(e.target.value)}>
 
               <option value="">All Sites</option>
@@ -45,7 +45,7 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
               ))}
              </select>
 
-             <select id="condition-filter" value={conditionColor} 
+             <select className="filter" value={conditionColor} 
               onChange={(e) => setConditionColor(e.target.value)}>
 
               <option value="">All Conditions</option>
@@ -55,7 +55,7 @@ export default function Filter({ filter, setFilter, data, conditionColor, setCon
               ))}
              </select>
 
-             <select id="order-by" value={orderBy} onChange={(e) => setOrderBy(e.target.value)}> {/* Added dropdown for Order By */}
+             <select className="filter" value={orderBy} onChange={(e) => setOrderBy(e.target.value)}> {/* Added dropdown for Order By */}
                     <option value="">None</option>
                     <option value="id">Maintenance ID</option>
                     <option value="start_date">Start Date</option>

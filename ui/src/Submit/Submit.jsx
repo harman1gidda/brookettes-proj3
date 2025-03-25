@@ -21,7 +21,7 @@ export default function Submit() {
   const [formData, setFormData] = useState({site: 0, title: "", startDate: "", endDate: "", condition: ""});
   const [sites, setSites] = useState(siteOptions);
   const [siteformName, setSiteFormName] = useState('')
-  const [siteCondition, setSiteCondition] = useState()
+  const [siteCondition, setSiteCondition] = useState('green')
   const [loading, setLoading] = useState(false);
   const [siteData, setSiteData] = useState([])
   
@@ -44,29 +44,45 @@ export default function Submit() {
     setLoading(false)
   }, [sites])
 
-  function submit(){
+function submit(){
 
-    if (!formData.title || !formData.site || !formData.startDate || !formData.endDate ||!formData.condition){
+  if (!formData.title || !formData.site || !formData.startDate || !formData.endDate || !formData.condition){
       alert('Please fill out all fields before submitting.');
       return;
     }
     
-    fetch('http://localhost:8081/maintenance', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        task_title: formData.title,
-        site_id: formData.site,
-        start_date: formData.startDate,
-        end_date: formData.endDate,
-        condition_color: formData.condition
-      }),
-   })
-  }
+  fetch('http://localhost:8081/maintenance', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      task_title: formData.title,
+      site_id: formData.site,
+      start_date: formData.startDate,
+      end_date: formData.endDate,
+      condition_color: formData.condition
+    })
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log("Server Response:", data)
+      console.log(data.succeess)
+      if(data.succeess == true){
+        alert('Request Submitted!')
+        //formData ={};
+        window.location.reload();
+        console.log('Request submitted')
+      }else{
+        console.log('Failed to submit a Request')
+      }
+    })
+      .catch((error)=>{
+        console.log('Catching errors!')
+      })
+}
 
   const handleChange = (field, value) => {
     if(field == 'site'){
@@ -98,7 +114,7 @@ export default function Submit() {
 
   return (
     <>
-      <Box className='submit-box' sx={{ maxWidth: 500, mx: "auto", mt: -15, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
+      <Box className='submit-box' sx={{ maxWidth: 500, mx: "auto", mt: -15, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white", "margin-top":0 }}>
           <FormControl fullWidth margin="normal">
             <InputLabel id="site-label">Site Name</InputLabel>
               <Select
@@ -155,9 +171,16 @@ export default function Submit() {
               max={2}
               step={1}
               value={siteCondition}
+              defaultValue={1}
               onChange={(e, val) =>
                 typeof val === "number" && handleChange("condition", val) || setSiteCondition(val)
               }
+              // value={formData.condition}
+              // onChange={(e, val)=>{
+              //   if(typeof val === 'number'){
+              //     handleChange("condition", val);
+              //   }
+              // }}
               marks={[
                 { value: 0, label: "Green" },
                 { value: 1, label: "Yellow" },
@@ -174,5 +197,3 @@ export default function Submit() {
     </>
   );
 }
-
-

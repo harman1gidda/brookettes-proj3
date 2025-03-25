@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR /ui
+
+COPY . /ui
+
+EXPOSE 5173
+
+RUN npm install
+
+CMD npm run dev

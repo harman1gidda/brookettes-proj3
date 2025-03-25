@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import './HandleEdit.css';
 
-export default function handleEdit({ id }) {
+export default function handleEdit({ id, currentData }) {
   const [status, setStatus] =useState(null);
   const [formData, setFormData] = useState({
     start_date: '',
     end_date: '',
-    condition_color: ''
+    condition_color: '',
+    approver_comments:'',
+    approved_rejected: false 
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,7 +16,8 @@ export default function handleEdit({ id }) {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      // [name]: value
+      [name]: name === 'approved_rejected' ? event.target.checked : value,
     });
   };
 
@@ -44,7 +47,18 @@ export default function handleEdit({ id }) {
     })
   }
 
+// const openModal = () => {
+//   setIsModalOpen(true);
+// };
 const openModal = () => {
+  // Populate formData with current values when the modal is opened
+  setFormData({
+    start_date: currentData.start_date || '',
+    end_date: currentData.end_date || '',
+    condition_color: currentData.condition_color || '',
+    approver_comments: currentData.approver_comments || '',
+    approved_rejected: currentData.approved_rejected || false,
+  });
   setIsModalOpen(true);
 };
 
@@ -55,7 +69,7 @@ const closeModal = () => {
 
 return(
   <div>
-      <button onClick={openModal}>Edit</button>
+      <button className='med-btn' onClick={openModal}>Edit</button>
 
       {isModalOpen && (
         <div className="modal-overlay">
@@ -85,7 +99,7 @@ return(
               </div>
 
               <div>
-                <label htmlFor="condition_color">Condition Color:</label>
+                {/* <label htmlFor="condition_color">Condition Color:</label>
                 <input
                   type="text"
                   id="condition_color"
@@ -93,7 +107,48 @@ return(
                   value={formData.condition_color}
                   onChange={handleInputChange}
                   placeholder="Enter condition color"
+                /> */}
+                   <label htmlFor="condition_color">Condition Color:</label>
+                <select
+                  id="condition_color"
+                  name="condition_color"
+                  value={formData.condition_color} // Bind dropdown to formData
+                  onChange={handleInputChange} // Update formData on change
+                >
+                  <option value="">Select a color</option> {/* Default option */}
+                  <option value="Green">Green</option> {/* Green option */}
+                  <option value="Yellow">Yellow</option> {/* Yellow option */}
+                  <option value="Red">Red</option> {/* Red option */}
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="approver_comments">Approver Comments:</label>
+                <input
+                  type="text"
+                  id="userInput"
+                  name="approver_comments"
+                  placeholder="Any Comments?"
+                  value={formData.approver_comments}
+                  onChange={handleInputChange}
+                 />
+              </div>
+
+              <div>
+                <label htmlFor="approved_rejected">Approve?:</label>
+                <input
+                  type="checkbox"
+                  id="approved_rejected"
+                  name="approved_rejected"
+                  checked={formData.approved_rejected}
+                  onChange={(event) => {
+                    setFormData({
+                      ...formData,
+                      approved_rejected: event.target.checked, 
+                    });
+                  }}
                 />
+                <p id="status">{formData.approved_rejected ? 'Approved!' : 'Unapproved!'}</p>
               </div>
 
               <button type="button" onClick={handleEdit}>Submit</button>

@@ -31,7 +31,7 @@ export default function HandleDelete({id}){
 
   return (  
     <div>
-      <button onClick={handleDelete}>Delete</button>
+      <button className='med-btn' onClick={handleDelete}>Delete</button>
     </div>
   );
 }

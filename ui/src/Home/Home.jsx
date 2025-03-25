@@ -36,21 +36,26 @@ export default function Home(){
     )}
     
     return (
-        <>
-            {/* <h1 className='header'>HOME PAGE</h1> */}
+        <>            
             <div className='NavContainer'>
                 <div className='NavBar'>
                     <div className='button'>
+                    <a href="/maintenance" className="iconLink">
                         <img src={Gears} alt="gears" />
-                        <button className='iconButton'><Link to={"/maintenance"}>Maintenance</Link></button>
+                        <button className='iconButton'>Maintenance</button>
+                    </a>
                     </div>
                     <div className='button'>
-                        <img src={Sites} alt="gears" />
-                        <button className='iconButton'><Link to={"/sites"}>Sites</Link></button>
+                    <a href="/sites" className="iconLink">
+                        <img src={Sites} alt="sites" />
+                        <button className='iconButton'>Sites</button>
+                    </a>
                     </div>
                     <div className='button'>
-                        <img src={Conflict} alt="gears" />
-                        <button className='iconButton'><Link to={"/conflicts"}>Conflicts</Link></button>
+                    <a href="/conflicts" className="iconLink">
+                        <img src={Conflict} alt="conflicts" />
+                        <button className='iconButton'>Conflicts</button>
+                    </a>                        
                     </div>
                 </div>
                 <div className='SubmitBar'>

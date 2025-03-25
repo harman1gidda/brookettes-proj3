@@ -10,37 +10,11 @@ import Submit from '../Submit/Submit'
 import Navbar from '../Navbar/Navbar'
 
 function App() {
-
-  var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
-  var current = 0;
-  document.addEventListener('keydown', keyHandler, false);
-
-  var keyHandler = function (event) {
-    console.log(event.key)
-    // If the key isn't in the pattern, or isn't the current key in the pattern, reset
-    if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
-      current = 0;
-      return;
-    }
-  
-    // Update how much of the pattern is complete
-    current++;
-  
-    // If complete, alert and reset
-    if (pattern.length === current) {
-      current = 0;
-      window.alert('You found it!');
-    }
-  
-  };
-
   return (
     <>
-      
-      {/* JUST GETTING THE BASIC FILES READY */}
-      <Navbar/>
-      <Routes>
-        
+    
+     <Navbar/>
+      <Routes>        
         <Route path="/" element={<Home />}/>
         <Route path='/maintenance' element={<Maintenance />}/>
         <Route path='/sites' element={<Sites />} />
@@ -51,10 +25,11 @@ function App() {
 
       <div className='footer'>
         <h3>The Brookettes Project 3</h3>
-        <p>Authors: Brooke Sharpenski, Harman Gidda, Kiersten Morrow, Andrew Stamps, Marques Johnson, Damon Hayes</p>
-      </div>
+        <h7 id="footerP">Authors: Brooke Sharpenski, Harman Gidda, Kiersten Morrow, Andrew Stamps, Marques Johnson, Damon Hayes</h7>
+
+      </div>          
     </>
   )
-} {}
+}
 
 export default App

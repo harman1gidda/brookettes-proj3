@@ -1,26 +1,35 @@
-body {
+ body {
   background-color: #34495e;
 }
 
-:root{
-  display: flex;
-  justify-content: center;
-}
-
-.chart-container {
-  align-items: center;
-  justify-content: center;
-  background-color: #07559e;
-  padding: 20px;
-  border-radius: 10px;
-} 
-
 .maintenance-table {
-  margin-top: 0px;
+  margin-top: 2rem;
   
   width: 100%;
- 
+  border-radius: 5px;
+  align-items: center;
 } 
+
+
+.filterTask-container{
+  align-items: center;
+  background-color: rgb(71, 97, 122);
+  max-height: 70px;
+  margin-top: 3rem;
+  border-radius: 15px;
+  border: 2px solid #ffffff77;
+}
+
+.filter {
+  align-items: center;
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 5px;
+  border: 2px solid #ecf0f1;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  }
+
 
 th {
   background-color: #34495e;
@@ -32,57 +41,23 @@ th {
   border-radius: 4px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  
 }
 
 td {
-  border: 2px solid #ecf0f1;
+  border: 2px solid #f1ecec;
   border-radius: 5px;
-  background-color: rgb(184, 182, 182); 
-  color: black;
+  color: black;  
+ 
 }
 
-#filter {
-  align-items: center;
-  margin-top: 0 ;
-  margin-bottom: 0;
-  margin-left: 3px;
-  border-radius: 10px;
-  padding: 2px;
-  background-color: rgb(93, 100, 124);
-}
-
-.header {
-  background-color: rgb(93, 100, 124);
-  color: white;
-  border: solid 2px black;
-  border-radius: 5px;
-  margin-top: 0%;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-tr{
-  text-align: center ;
-  border: 3px solid #ecf0f1;
-}
-
-.chart-container{
+.ebtn-container{
   display: flex;
-  flex-direction: column;
-  height: fit-content;
-  border: 1px solid #ccc;
   justify-content: center;
-}
-
-:root{
   align-items: center;
-}
+  }
 
-.maintenance-table{
-  width: 90%;
-  align-items: center;
-  padding: 30px;
-  
-}
+  .med-btn{
+    margin: 10px;
+  }
 

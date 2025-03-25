@@ -154,3 +154,5 @@ app.get('/joined', (req, res) =>{
         .join('maintenance', 'site_id', '=', 'sites.id')
         .then(data => res.json(data))
 })
+
+module.exports = app;

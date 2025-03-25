@@ -3,24 +3,37 @@ button{
     color: black;
 }
 
-/* #root{
-    min-width: 100vw;
-    min-height: 100vh;
+:root{
+    width: 100%;
+    height: 100%;
     
-} */
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+}
 
 .calendar-div{
     display: flex;
     justify-content: center;
+    min-height: fit-content;
+    min-width: 100vw;
+    height: 100%;
 }
 
 
 .fc {
     position: fixed;
-    min-width: 35vw;
-    min-height: 35vh;
-    margin-top: -450px;
+    top: 125px;
+    left: auto;
+    width: 70%;
+    height: 75%;
     z-index: 1;
+}
+
+table{
+    background-color: #93a8ac;
 }
 
 .conflicts{
