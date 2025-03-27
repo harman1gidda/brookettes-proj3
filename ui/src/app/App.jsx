@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Maintenance from '../Maintenance/Maintenance'
 import Home from '../Home/Home'
@@ -8,6 +7,7 @@ import SiteDetail from '../SiteDetail/SiteDetail';
 import Conflicts from '../Conflicts/Conflicts'
 import Submit from '../Submit/Submit'
 import Navbar from '../Navbar/Navbar'
+import NotFound from '../NotFound/NotFound'
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/sites/:id" element={<SiteDetail />} />
         <Route path='/conflicts' element={<Conflicts />} />
         <Route path='/submit' element={<Submit />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <div className='footer'>

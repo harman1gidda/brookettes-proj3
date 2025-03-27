@@ -1,5 +1,5 @@
-import Reach from 'react';
-import React, { useEffect, useState } from 'react';
+
+import React, { useState } from 'react';
 import './Navbar.css'
 import {useNavigate} from 'react-router-dom';
 import Hamburger from "hamburger-react"

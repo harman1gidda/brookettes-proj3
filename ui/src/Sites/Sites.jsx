@@ -1,5 +1,4 @@
-import { createElement, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import "./Sites.css";
 import { Link } from 'react-router-dom';
 //import "./SiteDetail.jsx"
@@ -7,21 +6,36 @@ import { Link } from 'react-router-dom';
 export default function Sites() {
   const sitesData = []
   const [data, setData] = useState([]);
-  const [btnClick, setBtnClick] = useState(0);
   const [form, setForm] = useState(true);
   const [newName, setNewName] = useState('');
-  const [siteId, setSiteId] = useState()
   const [hidden, setHidden] = useState(true)
   const [status, setStatus] = useState(null);
+  const [maintenanceId, setMaintenanceId] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:8081/sites")
       .then(res => res.json())
       .then(res2 => setData(res2))
   }, [])
+ 
+  useEffect(() => {
+    fetch('http://localhost:8081/maintenance')
+      .then(res => res.json())
+      .then(res2 => {
+        for(let i in res2){
+          setMaintenanceId(maintenanceId => [...maintenanceId, res2[i].site_id])
+        }
+      })
+  },[])
+
 
   function deleteSite(id) {
     const confirmDelete = window.confirm('Are you sure you want to delete this?')
+
+    if(maintenanceId.includes(id)){
+      alert('Cannot delete site that has current maintenance tasks')
+      return
+    }
 
     if (confirmDelete) {
       fetch(`http://localhost:8081/sites/${id}`, {
@@ -36,6 +50,7 @@ export default function Sites() {
           if (res.ok) {
             alert('Site deleted!')
             window.location.reload();
+            //Is there another way to refresh without reloading the app?
           } else {
             setStatus('Failed to delete')
           }
@@ -79,6 +94,7 @@ export default function Sites() {
       })
   }
 
+
   const inputChange = (event) => {
     setNewName(event.target.value)
   }
@@ -111,7 +127,7 @@ export default function Sites() {
         <div>
           <h1 className='siteInputLabel'>Add New Site</h1>
           <div>
-            <input className='siteInput' defaultValue='New Site Name' type="text" onChange={inputChange} />
+            <input className='siteInput' defaultValue='  New Site Name' type="text" onChange={inputChange} />
           </div>
           <button className='siteSubmitButton' onClick={() => { createNewSite(newName) }}>Submit</button>
         </div>

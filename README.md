@@ -26,7 +26,7 @@ The purpose of this application is to manage and track maintenance tasks across 
   - `pg`
   - `cors`
 
-### Steps to Run the Application
+### ⚡ Steps to Run the Application
 1. Clone the repository:
    ```sh
    git clone https://github.com/harman1gidda/brookettes-proj3.git
@@ -114,8 +114,13 @@ The purpose of this application is to manage and track maintenance tasks across 
 - Run `npx jest` in api folder
 
 ### UI Test
+- Install the following npm packages:
+  - `npm install --save-dev supertest`
+  - `npm install --save-dev jest`
 
+  **ensure the devDependencies section is updated in your package.json
 
+- Run `npx jest` in api folder
 
 ---
 
@@ -129,10 +134,19 @@ The purpose of this application is to manage and track maintenance tasks across 
 
 ---
 
-## 🤝 Authors
+## 🤝 Contributing
+
+Feel free to fork this repository and create pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
+## 🧑‍💻 Authors
 - Brooke Sharpenski
 - Harman Gidda
 - Kiersten Morrow
 - Andrew Stamps
 - Marques Johnson
 - Damon Hayes
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.

@@ -14,7 +14,11 @@ import {
 } from "@mui/material";
 
 var siteOptions = ["Site A", "Site B", "Site C"];
-const colorMap = ["green","yellow", "red"];
+const colorMap = {
+  Green: "Green",
+  Yellow: "Yellow",
+  Red: "Red"
+};
 
 
 export default function Submit() {

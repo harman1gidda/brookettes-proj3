@@ -47,9 +47,6 @@ export default function handleEdit({ id, currentData }) {
       })
   }
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
   const openModal = () => {
     // Populate formData with current values when the modal is opened
     setFormData({
@@ -97,16 +94,7 @@ export default function handleEdit({ id, currentData }) {
                 />
               </div>
 
-              <div>
-                {/* <label htmlFor="condition_color">Condition Color:</label>
-                <input
-                  type="text"
-                  id="condition_color"
-                  name="condition_color"
-                  value={formData.condition_color}
-                  onChange={handleInputChange}
-                  placeholder="Enter condition color"
-                /> */}
+              <div>               
                 <label htmlFor="condition_color">Condition Color:</label>
                 <select
                   id="condition_color"
@@ -114,10 +102,10 @@ export default function handleEdit({ id, currentData }) {
                   value={formData.condition_color} // Bind dropdown to formData
                   onChange={handleInputChange} // Update formData on change
                 >
-                  <option value="">Select a color</option> {/* Default option */}
-                  <option value="Green">Green</option> {/* Green option */}
-                  <option value="Yellow">Yellow</option> {/* Yellow option */}
-                  <option value="Red">Red</option> {/* Red option */}
+                  <option value="">Select a color</option> 
+                  <option value="Green">Green</option> 
+                  <option value="Yellow">Yellow</option> 
+                  <option value="Red">Red</option> 
                 </select>
               </div>
 

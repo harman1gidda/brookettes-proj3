@@ -1,7 +1,5 @@
-import { createElement, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import "./Maintenance.css";
-import {Link} from 'react-router-dom';
 import Filter from '../Filter/Filter.jsx';
 import HandleEdit from './HandleEdit.jsx';
 import HandleDelete from './HandleDelete.jsx';
@@ -10,11 +8,7 @@ export default function Maintenance() {
     const [filter, setFilter] = useState("");
     const [filteredData, setFilteredData] = useState([]);
     const [data, setData] = useState([]);
-    // const [site, setSite] = useState('')
-    // const [startDate, setStartDate] =useState('');
-    // const [endDate, setendDate] =useState('');
-    const [conditionColor, setConditionColor] =useState('');
-
+    const [conditionColor, setConditionColor] = useState('');
     const [orderBy, setOrderBy] = useState("id");  
 
     useEffect(() => {
@@ -23,13 +17,9 @@ export default function Maintenance() {
         .then(res2 => {
           setData(res2);
           setFilteredData(res2); 
-          console.log(res2)
         })
     }, []);
 
-    // useEffect(() => {
-    //   console.log('🔥 Rendered table with rows:', filteredData.length);
-    // }, [filteredData]);
 
     return (
       <>
